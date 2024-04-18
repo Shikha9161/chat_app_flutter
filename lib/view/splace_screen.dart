@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,15 +25,13 @@ class _SplashScreenState extends State<SplashScreen> {
   initView()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool check=prefs.getBool("isLogin")??false;
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), (){
      if(check){
        Get.off(const ProfileScreen());
      }else{
        Get.off(const LoginScreen());
      }
     });
-
-
   }
 
   @override

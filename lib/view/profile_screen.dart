@@ -44,10 +44,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 2.0,
         shadowColor: Colors.pink,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children:[
+            const SizedBox(height: 80),
             const CircleAvatar(
               radius: 50,
               backgroundImage: NetworkImage(
@@ -90,11 +91,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ElevatedButton.icon(
                   onPressed: () async{
                     SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.clear();
+                    // prefs.clear();
+                    prefs.setBool("isLogin", false);
                     Get.off(const LoginScreen());
                   },
                   icon: const Icon(Icons.logout),
-                  label: const Text('Logout'),   
+                  label: const Text('Logout'),
                 ),
                 const Spacer(),
               ],
